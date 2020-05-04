@@ -1,6 +1,6 @@
-import Storage from './storage';
+import Storage, { StorageSession } from './storage';
 
-export { Storage }
+export { Storage, StorageSession }
 
 export function isIOS() {
     let u = window.navigator.userAgent;

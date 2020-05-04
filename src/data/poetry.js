@@ -1,3 +1,4 @@
+import { Storage, StorageSession } from '../common';
 import tang01 from './tang01';
 import tang02 from './tang02';
 import tang03 from './tang03';
@@ -48,58 +49,104 @@ import tang46 from './tang46';
 import tang47 from './tang47';
 import tang48 from './tang48';
 import tang49 from './tang49';
+const tangKey1 = 'tang_poet1';
+const tangKey2 = 'tang_poet2';
+const tangKey3 = 'tang_poet3';
+const tangKey4 = 'tang_poet4';
+const tangKey5 = 'tang_poet5';
+const tangKey6 = 'tang_poet6';
+export default function Store() {
+    let tangPoet_storage1 = Storage.get(tangKey1),
+        tangPoet_storage2 = Storage.get(tangKey2),
+        tangPoet_storage3 = Storage.get(tangKey3),
+        tangPoet_storage4 = StorageSession.get(tangKey4),
+        tangPoet_storage5 = StorageSession.get(tangKey5),
+        tangPoet_storage6 = StorageSession.get(tangKey6);
+    if (!tangPoet_storage1 || !tangPoet_storage2 || !tangPoet_storage3 || !tangPoet_storage4 || !tangPoet_storage5 || !tangPoet_storage6) {
+        let tangPoet1 = [
+            ...tang01,
+            ...tang02,
+            ...tang03,
+            ...tang04,
+            ...tang05,
+            ...tang06,
+            ...tang07,
+            ...tang08,
+        ],
+            tangPoet2 =
+                [
+                    ...tang09,
+                    ...tang10,
+                    ...tang11,
+                    ...tang12,
+                    ...tang13,
+                    ...tang14,
+                    ...tang15,
+                    ...tang16,
+                    ...tang17
+                ],
+            tangPoet3 = [
+                ...tang18,
+                ...tang19,
+                ...tang20,
+                ...tang21,
+                ...tang22,
+                ...tang23,
+                ...tang24,
+                ...tang25
+            ],
+            tangPoet4 = [
+                ...tang26,
+                ...tang27,
+                ...tang28,
+                ...tang29,
+                ...tang30,
+                ...tang31,
+                ...tang32,
+                ...tang33
+            ],
+            tangPoet5 = [
+                ...tang34,
+                ...tang35,
+                ...tang36,
+                ...tang37,
+                ...tang38,
+                ...tang39,
+                ...tang40,
+                ...tang41
+            ], tangPoet6 = [
+                ...tang42,
+                ...tang43,
+                ...tang44,
+                ...tang45,
+                ...tang46,
+                ...tang47,
+                ...tang48,
+                ...tang49
+            ];
+        Storage.set(tangKey1, tangPoet1);
+        Storage.set(tangKey2, tangPoet2);
+        Storage.set(tangKey3, tangPoet3);
+        StorageSession.set(tangKey4, tangPoet4);
+        StorageSession.set(tangKey5, tangPoet5);
+        StorageSession.set(tangKey6, tangPoet6);
+        return [
+            ...tangPoet1,
+            ...tangPoet2,
+            ...tangPoet3,
+            ...tangPoet4,
+            ...tangPoet5,
+            ...tangPoet6
+        ];
+    } else {
+        return [
+            ...tangPoet_storage1,
+            ...tangPoet_storage2,
+            ...tangPoet_storage3,
+            ...tangPoet_storage4,
+            ...tangPoet_storage5,
+            ...tangPoet_storage6
+        ];
+    }
+};
 
-export default [
-    ...tang01,
-    ...tang02,
-    ...tang03,
-    ...tang04,
-    ...tang05,
-    ...tang06,
-    ...tang07,
-    ...tang08,
-    ...tang09,
-    ...tang10,
-    ...tang11,
-    ...tang12,
-    ...tang13,
-    ...tang14,
-    ...tang15,
-    ...tang16,
-    ...tang17,
-    ...tang18,
-    ...tang19,
-    ...tang20,
-    ...tang21,
-    ...tang22,
-    ...tang23,
-    ...tang24,
-
-    ...tang25,
-    ...tang26,
-    ...tang27,
-    ...tang28,
-    ...tang29,
-    ...tang30,
-    ...tang31,
-    ...tang32,
-    ...tang33,
-    ...tang34,
-    ...tang35,
-    ...tang36,
-    ...tang37,
-    ...tang38,
-    ...tang39,
-    ...tang40,
-    ...tang41,
-    ...tang42,
-    ...tang43,
-    ...tang44,
-    ...tang45,
-    ...tang46,
-    ...tang47,
-    ...tang48,
-    ...tang49,
-    
-
-]

@@ -36,7 +36,7 @@ function PoetryListComponent(props) {
     }, [key]);
 
     function Init() {
-        let _poetrys = poetryList.filter((po) => {
+        let _poetrys = poetryList().filter((po) => {
             return po.times === times;
         }).slice(0, pagesize);
         return _poetrys;
@@ -46,7 +46,7 @@ function PoetryListComponent(props) {
         let _poetrys;
         if (key) {
             var reg = new RegExp(key);
-            _poetrys = poetryList.filter((po) => {
+            _poetrys = poetryList().filter((po) => {
                 return po.title.match(reg) ||
                     po.content.join('').match(reg) ||
                     po.poet.match(reg) ||
