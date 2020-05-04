@@ -18,45 +18,43 @@ function PoetryListComponent(props) {
     }, 100);
 
     useEffect(() => {
-        let _poetrys;
         if (key) {
-            _poetrys = InitKey();
+            InitKey();
         } else {
-            _poetrys = Init();
+            Init();
         }
 
-        setPoetrys(_poetrys);
+
     }, [props.match.params.times, props.match.params.poet, pagesize]);
 
     useEffect(() => {
-        let _poetrys;
-        _poetrys = InitKey();
-        setPoetrys(_poetrys);
-
+        InitKey();
     }, [key]);
 
-    function Init() {
-        let _poetrys = poetryList().filter((po) => {
+    async function Init() {
+        let data = await poetryList();
+        let _poetrys = data.filter((po) => {
             return po.times === times;
         }).slice(0, pagesize);
-        return _poetrys;
+        debugger;
+        setPoetrys(_poetrys);
     }
 
-    function InitKey() {
-        let _poetrys;
+    async function InitKey() {
+        let _poetrys, data = await poetryList();
         if (key) {
             var reg = new RegExp(key);
-            _poetrys = poetryList().filter((po) => {
+            _poetrys = data.filter((po) => {
                 return po.title.match(reg) ||
                     po.content.join('').match(reg) ||
                     po.poet.match(reg) ||
                     po.type.match(reg);
             }).slice(0, pagesize);
+            setPoetrys(_poetrys);
         } else {
-            _poetrys = Init();
+            await Init();
         }
 
-        return _poetrys;
     }
 
     function ScrollPage() {
